@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>LineChart Example Made with Vue</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- <link rel="stylesheet" type="text/css" media="screen" href="main.css" /> -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/chart.js@2.7.2/dist/Chart.bundle.js"></script>
+    <script src="https://unpkg.com/vue-chartkick@0.5.0"></script>
+</head>
+
+<body>
+    <div id="app">
+        <line-chart :legend="true"  xtitle="Time" ytitle="# of Moshpits" label="Litness Levels" :colors="['#b00', '#fff']"  id="users-chart" :data="chartData"></line-chart>
+    </div>
+</body>
+<script>
+    var app = new Vue({
+        el: "#app",
+        data() {
+            return { 
+                chartData: []
+            }
+        },
+        mounted() {
+            setInterval(this.randomData, 1000)
+        },
+        methods: {
+            randomData() {
+                let timeCreated = Date();
+                let data = [timeCreated,(Math.random() * 200)] ;
+                return this.chartData.push(data )
+            }
+        }
+    })
+</script>
+
+</html>
